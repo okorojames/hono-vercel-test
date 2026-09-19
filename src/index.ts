@@ -13,4 +13,7 @@ app.get("/", (c) => {
 });
 app.route("/v1", v1);
 
-export default app;
+export default {
+  port: 5040,
+  fetch: app.fetch,
+};
