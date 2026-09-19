@@ -3,6 +3,7 @@ import { v1 } from "./v1";
 import { cors } from "hono/cors";
 import { logger } from "hono/logger";
 import { secureHeaders } from "hono/secure-headers";
+import { handle } from "hono/vercel";
 
 const app = new Hono();
 app.use(cors());
@@ -13,7 +14,8 @@ app.get("/", (c) => {
 });
 app.route("/v1", v1);
 
-export default {
-  port: 5040,
-  fetch: app.fetch,
-};
+// export default {
+//   port: 5040,
+//   fetch: app.fetch,
+// };
+export default handle(app);
